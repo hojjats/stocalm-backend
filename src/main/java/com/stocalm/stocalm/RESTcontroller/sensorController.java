@@ -32,4 +32,9 @@ public class sensorController {
         }
 
     }
+
+    @GetMapping("/test/{test}")
+    public String test(@PathVariable String test) {
+        return "Testar med: " + test;
+    }
 }
