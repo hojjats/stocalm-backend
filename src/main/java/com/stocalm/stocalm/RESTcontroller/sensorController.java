@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class sensorController {
 
     @GetMapping("/{sensorId}")
-    public Sensor getSensorById(@PathVariable int sensorId) {
+    public Sensor getSensorById(@PathVariable String sensorId) {
+        int id = Integer.parseInt(sensorId);
         Sensor s1 = new Sensor(1, 1.3453, 0.53432);
         s1.addReading(new Reading("2018-01-05", "10:10", 3.2));
         s1.addReading(new Reading("2018-01-05", "10:20", 3.0));
@@ -22,7 +23,7 @@ public class sensorController {
         s2.addReading(new Reading("2019-05-01", "20:40", 1.1));
         s2.addReading(new Reading("2019-05-01", "20:50", 1.7));
 
-        switch (sensorId) {
+        switch (id) {
             case 1:
                 return s1;
             case 2:

@@ -1,7 +1,5 @@
 package com.stocalm.stocalm.Models;
 
-import java.util.Date;
-
 public class Reading {
     private String date;
     private String time;
