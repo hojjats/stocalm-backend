@@ -9,7 +9,7 @@ public class Sensor {
     private ArrayList<Reading> readings;
 
     public Sensor(int id, double x, double y) {
-        new Sensor(id, x, y, new ArrayList<>());
+        this(id, x, y, new ArrayList<>());
     }
 
     public Sensor(int id, double x, double y, ArrayList<Reading> readings) {
