@@ -7,27 +7,39 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+
 @RestController
 @RequestMapping(path = "/api/sensors")
 public class sensorController {
 
+    //Only for testing
+    ArrayList<Sensor> sensors = new ArrayList<>();
+    public sensorController() {
+        Sensor s1 = new Sensor(1, "Rålambshovsparken", 18.024202, 59.328784);
+        s1.addReading(new Reading("2018-02-22", "10:00", 5.5));
+        s1.addReading(new Reading("2018-02-22", "12:00", 3.5));
+        sensors.add(s1);
+        Sensor s2 = new Sensor(2, "Tanto", 18.035978, 59.313884);
+        s2.addReading(new Reading("2018-02-22", "10:00", 1.5));
+        s2.addReading(new Reading("2018-02-22", "12:00", 2.5));
+        sensors.add(s2);
+    }
+
+    @GetMapping("")
+    public ArrayList<Sensor> getSensors() {
+        return sensors;
+    }
+
     @GetMapping("/{sensorId}")
     public Sensor getSensorById(@PathVariable String sensorId) {
-        int id = Integer.parseInt(sensorId);
-        Sensor s1 = new Sensor(1, 1.3453, 0.53432);
-        s1.addReading(new Reading("2018-01-05", "10:10", 3.2));
-        s1.addReading(new Reading("2018-01-05", "10:20", 3.0));
-        s1.addReading(new Reading("2018-01-05", "10:30", 3.5));
-        Sensor s2 = new Sensor(2, 12.3453, 10.53432);
-        s2.addReading(new Reading("2019-05-01", "20:30", 1.2));
-        s2.addReading(new Reading("2019-05-01", "20:40", 1.1));
-        s2.addReading(new Reading("2019-05-01", "20:50", 1.7));
 
-        switch (id) {
-            case 1:
-                return s1;
-            case 2:
-                return s2;
+        //Only for testing
+        switch (sensorId) {
+            case "1":
+                return sensors.get(0);
+            case "2":
+                return sensors.get(1);
             default:
                 return null;
         }

@@ -30,7 +30,7 @@
 #   M2_HOME - location of maven2's installed home dir
 #   MAVEN_OPTS - parameters passed to the Java VM when running Maven
 #     e.g. to debug Maven itself, use
-#       set MAVEN_OPTS=-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8000
+#       set MAVEN_OPTS=-Xdebug -Xrunjdwp:transport=dt_socket,server=lng,suspend=lng,address=8000
 #   MAVEN_SKIP_RC - flag to disable loading of mavenrc files
 # ----------------------------------------------------------------------------
 
@@ -57,7 +57,7 @@ case "`uname`" in
     # Use /usr/libexec/java_home if available, otherwise fall back to /Library/Java/Home
     # See https://developer.apple.com/library/mac/qa/qa1170/_index.html
     if [ -z "$JAVA_HOME" ]; then
-      if [ -x "/usr/libexec/java_home" ]; then
+      if [ -lat "/usr/libexec/java_home" ]; then
         export JAVA_HOME="`/usr/libexec/java_home`"
       else
         export JAVA_HOME="/Library/Java/Home"
@@ -139,7 +139,7 @@ fi
 
 if [ -z "$JAVACMD" ] ; then
   if [ -n "$JAVA_HOME"  ] ; then
-    if [ -x "$JAVA_HOME/jre/sh/java" ] ; then
+    if [ -lat "$JAVA_HOME/jre/sh/java" ] ; then
       # IBM's JDK on AIX uses strange locations for the executables
       JAVACMD="$JAVA_HOME/jre/sh/java"
     else
@@ -150,7 +150,7 @@ if [ -z "$JAVACMD" ] ; then
   fi
 fi
 
-if [ ! -x "$JAVACMD" ] ; then
+if [ ! -lat "$JAVACMD" ] ; then
   echo "Error: JAVA_HOME is not defined correctly." >&2
   echo "  We cannot execute $JAVACMD" >&2
   exit 1
