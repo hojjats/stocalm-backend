@@ -4,27 +4,33 @@ import java.util.ArrayList;
 
 public class Sensor {
     private int id;
-    private double x;
-    private double y;
+    private String name;
+    private double lng;
+    private double lat;
     private ArrayList<Reading> readings;
 
-    public Sensor(int id, double x, double y) {
-        this(id, x, y, new ArrayList<>());
+    public Sensor(int id, String name, double lng, double lat) {
+        this(id, name, lng, lat, new ArrayList<>());
     }
 
-    public Sensor(int id, double x, double y, ArrayList<Reading> readings) {
+    public Sensor(int id, String name, double lng, double lat, ArrayList<Reading> readings) {
         this.id = id;
-        this.x = x;
-        this.y = y;
+        this.name = name;
+        this.lng = lng;
+        this.lat = lat;
         this.readings = readings;
     }
 
-    public double getX() {
-        return x;
+    public double getLat() {
+        return lat;
     }
 
-    public double getY() {
-        return y;
+    public double getLng() {
+        return lng;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public ArrayList<Reading> getReadings() {
