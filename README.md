@@ -10,6 +10,31 @@
 * To install: https://docs.mongodb.com/v3.2/administration/install-community/
 * For Windows, check system environment variables: https://stackoverflow.com/a/41507803
 
+## Setting up your own test MongoDB
+* Register a MongoDB user https://www.mongodb.com/download-center
+* Follow the onboarding process to create a cluster (choose all free tier)
+
+* Then do the following:
+1. Go to Project -> Clusters
+1. In the cluster you created during the onboarding process, click Connect
+1. Create a user (remember username and password, as this will be used in the backend)
+1. Choose Connect your application
+1. For this project, choose Java as Driver and newest version
+1. Copy the string for Connection String Only
+1. Close the Connect to cluster window
+1. In the cluster view, click Collections
+1. Add a new collection/database, with the database "Stocalm"
+1. Collection name as "Sensors"
+
+* In your IDE:
+1. Fetch the newest version of stocalm-backend
+1. Create your new branch
+1. In resources -> applications.properties
+1. Change the string for spring.data.mongodb.uri to the string from Connect, in above steps, it should look like the following: `mongodb+srv://Username:<Password>@cluster0-nrory.mongodb.net/Stocalm?retryWrites=true`
+1. Run StocalmApplication 
+
+
+
 ### Ionic 
 * To install: https://ionicframework.com/getting-started#cli
 
