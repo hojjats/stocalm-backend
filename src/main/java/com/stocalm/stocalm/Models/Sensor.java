@@ -1,24 +1,33 @@
 package com.stocalm.stocalm.Models;
 
+import org.springframework.data.annotation.Id;
+
 import java.util.ArrayList;
 
 public class Sensor {
-    private int id;
+    @Id
+    private String id;
     private String name;
     private double lng;
     private double lat;
     private ArrayList<Reading> readings;
 
-    public Sensor(int id, String name, double lng, double lat) {
-        this(id, name, lng, lat, new ArrayList<>());
+    public Sensor() {
     }
 
-    public Sensor(int id, String name, double lng, double lat, ArrayList<Reading> readings) {
-        this.id = id;
+    public Sensor(String name, double lng, double lat) {
+        this(name, lng, lat, new ArrayList<>());
+    }
+
+    public Sensor(String name, double lng, double lat, ArrayList<Reading> readings) {
         this.name = name;
         this.lng = lng;
         this.lat = lat;
         this.readings = readings;
+    }
+
+    public String getId() {
+        return id;
     }
 
     public double getLat() {
