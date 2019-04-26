@@ -25,7 +25,7 @@
 1. Close the Connect to cluster window
 1. In the cluster view, click Collections
 1. Add a new collection/database, with the database "Stocalm"
-1. Collection name as "Sensors"
+1. Collection name as "sensors"
 
 * In your IDE:
 1. Fetch the newest version of stocalm-backend
