@@ -12,6 +12,11 @@ public class SensorService {
     @Autowired
     SensorRepository sensorRepository;
 
+    public Sensor addSensor(Sensor sensor){
+        sensorRepository.save(sensor);
+        return sensor;
+    }
+
     public List<Sensor> getAllSensors(){
        return sensorRepository.findAll();
     }
