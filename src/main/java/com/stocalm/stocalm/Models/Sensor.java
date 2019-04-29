@@ -13,10 +13,7 @@ public class Sensor {
     private ArrayList<Reading> readings;
 
     public Sensor() {
-    }
-
-    public Sensor(String name, double lng, double lat) {
-        this(name, lng, lat, new ArrayList<>());
+        readings = new ArrayList<>();
     }
 
     public Sensor(String name, double lng, double lat, ArrayList<Reading> readings) {
@@ -44,6 +41,26 @@ public class Sensor {
 
     public ArrayList<Reading> getReadings() {
         return readings;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setLat(double lat) {
+        this.lat = lat;
+    }
+
+    public void setLng(double lng) {
+        this.lng = lng;
+    }
+
+    public void setReadings(ArrayList<Reading> readings) {
+        this.readings = readings;
     }
 
     public void addReading(Reading reading) {

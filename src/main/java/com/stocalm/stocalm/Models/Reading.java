@@ -5,6 +5,10 @@ public class Reading {
     private String time;
     private double value;
 
+    public Reading() {
+
+    }
+
     public Reading(String date, String time, double value) {
         this.date = date;
         this.time = time;
@@ -21,6 +25,18 @@ public class Reading {
 
     public String getTime() {
         return time;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public void setValue(double value) {
+        this.value = value;
     }
 
     @Override
