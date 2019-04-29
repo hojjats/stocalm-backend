@@ -18,10 +18,10 @@ public class SensorService {
         return sensorRepository.findAll();
     }
 
-    public ArrayList<Reading> getReadingsBySensorId(String sensorId) {
+    public List<Reading> getReadingsBySensorId(String sensorId) {
         Sensor sensor = this.sensorRepository.getSensorById(sensorId);
         if (sensor != null) {
-            ArrayList<Reading> readings = sensor.getReadings();
+            List<Reading> readings = sensor.getReadings();
             if (readings == null) {
                 readings = new ArrayList<>();
             }

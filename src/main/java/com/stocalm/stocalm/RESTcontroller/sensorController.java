@@ -2,6 +2,7 @@ package com.stocalm.stocalm.RESTcontroller;
 
 import com.stocalm.stocalm.Models.Reading;
 import com.stocalm.stocalm.Models.Sensor;
+import com.stocalm.stocalm.Repository.SensorRepository;
 import com.stocalm.stocalm.Service.SensorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -35,7 +36,7 @@ public class sensorController {
      */
 
     @GetMapping("/readings/{sensorId}")
-    public ArrayList<Reading> getReadingsBySensorId(@PathVariable String sensorId) {
+    public List<Reading> getReadingsBySensorId(@PathVariable String sensorId) {
         return this.sensorService.getReadingsBySensorId(sensorId);
     }
 
