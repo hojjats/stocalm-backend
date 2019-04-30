@@ -3,23 +3,19 @@ package com.stocalm.stocalm.Models;
 import org.springframework.data.annotation.Id;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Sensor {
     @Id
     private String id;
-    private String name;
-    private double lng;
-    private double lat;
-    private ArrayList<Reading> readings;
+    private Position position;
+    private List<Reading> readings;
 
     public Sensor() {
         readings = new ArrayList<>();
     }
 
-    public Sensor(String name, double lng, double lat, ArrayList<Reading> readings) {
-        this.name = name;
-        this.lng = lng;
-        this.lat = lat;
+    public Sensor(Position position, List<Reading> readings) {
         this.readings = readings;
     }
 
@@ -27,36 +23,24 @@ public class Sensor {
         return id;
     }
 
-    public double getLat() {
-        return lat;
+    public Position getPosition() {
+        return position;
     }
 
-    public double getLng() {
-        return lng;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public ArrayList<Reading> getReadings() {
+    public List<Reading> getReadings() {
         return readings;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public void setId(String id) {
         this.id = id;
     }
 
-    public void setLat(double lat) {
-        this.lat = lat;
+    public void setPosition(Position position) {
+        this.position = position;
     }
 
-    public void setLng(double lng) {
-        this.lng = lng;
+    public void setReadings(List<Reading> readings) {
+        this.readings = readings;
     }
 
     public void setReadings(ArrayList<Reading> readings) {
