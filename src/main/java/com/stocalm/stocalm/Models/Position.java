@@ -10,6 +10,12 @@ public class Position {
 
     }
 
+    public Position(double lng, double lat, Location location) {
+        this.lng = lng;
+        this.lat = lat;
+        this.location = location;
+    }
+
     public double getLat() {
         return lat;
     }

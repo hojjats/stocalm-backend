@@ -8,6 +8,15 @@ public class Location {
 
     }
 
+    public Location(String name) {
+        this.name = name;
+    }
+
+    public Location(String name, String imgUrl) {
+        this.name = name;
+        this.imgUrl = imgUrl;
+    }
+
     public String getName() {
         return name;
     }

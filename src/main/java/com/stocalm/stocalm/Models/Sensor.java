@@ -16,6 +16,7 @@ public class Sensor {
     }
 
     public Sensor(Position position, List<Reading> readings) {
+        this.position = position;
         this.readings = readings;
     }
 
@@ -49,5 +50,14 @@ public class Sensor {
 
     public void addReading(Reading reading) {
         readings.add(reading);
+    }
+
+    @Override
+    public String toString() {
+        return new StringBuilder("Position: ")
+                .append(position)
+                .append(", Readings: ")
+                .append(readings)
+                .toString();
     }
 }
