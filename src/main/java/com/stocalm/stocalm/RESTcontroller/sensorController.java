@@ -31,6 +31,11 @@ public class sensorController {
         return null;
     }
 
+    @PostMapping("/post")
+    public Sensor addSensor(@RequestBody Sensor sensor){
+        return sensorService.addSensor(sensor);
+    }
+
     /*
     Readings
      */

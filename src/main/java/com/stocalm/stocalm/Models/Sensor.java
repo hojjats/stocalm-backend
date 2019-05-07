@@ -44,9 +44,9 @@ public class Sensor {
         this.readings = readings;
     }
 
-    public void setReadings(ArrayList<Reading> readings) {
-        this.readings = readings;
-    }
+//    public void setReadings(ArrayList<Reading> readings) {
+//        this.readings = readings;
+  //  }
 
     public void addReading(Reading reading) {
         readings.add(reading);

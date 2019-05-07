@@ -45,6 +45,11 @@ public class SensorService {
         }
     }
 
+    public Sensor addSensor(Sensor sensor){
+        sensorRepository.save(sensor);
+        return sensor;
+    }
+
     public Reading addReading(String sensorId, Reading reading) {
         Sensor sensor = this.sensorRepository.getSensorById(sensorId);
         sensor.addReading(reading);
