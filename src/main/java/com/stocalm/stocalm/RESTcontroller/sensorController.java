@@ -1,14 +1,13 @@
 package com.stocalm.stocalm.RESTcontroller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.stocalm.stocalm.Models.Reading;
 import com.stocalm.stocalm.Models.Sensor;
 import com.stocalm.stocalm.Service.SensorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping(path = "/api/sensors")
@@ -17,9 +16,9 @@ public class sensorController {
     @Autowired
     private SensorService sensorService;
 
-    /*
-    Sensors
-     */
+    //================================================================================
+    // Sensors
+    //================================================================================
 
     @GetMapping("")
     public List<Sensor> getSensors() {
@@ -31,9 +30,9 @@ public class sensorController {
         return null;
     }
 
-    /*
-    Readings
-     */
+    //================================================================================
+    // Readings
+    //================================================================================
 
     @GetMapping("/readings/{sensorId}")
     public List<Reading> getReadingsBySensorId(@PathVariable String sensorId) {
@@ -42,21 +41,19 @@ public class sensorController {
 
     @PostMapping("/readings/{sensorId}")
     public Reading addReading(@PathVariable String sensorId, @RequestBody Reading reading) {
+        try{
+            ObjectMapper mapper = new ObjectMapper();
+            String jsonString = mapper.writeValueAsString(reading);
+        }catch (JsonProcessingException e){
+
+        }
+
         return this.sensorService.addReading(sensorId, reading);
     }
 
-    /*
-    Graph
-     */
-
-    @GetMapping("/graph/weekdays/{sensorId}")
-    public double[] getGraphValuesByWeekday(@PathVariable String sensorId) {
-        return sensorService.getMeanValuesByWeekday(sensorId);
-    }
-
-    /*
-    Test
-     */
+    //================================================================================
+    // Test
+    //================================================================================
 
     @GetMapping("/test/{test}")
     public String test(@PathVariable String test) {

@@ -27,6 +27,7 @@ public class ApiService {
             con.disconnect();
             return content.toString();
         } catch (IOException e) {
+            System.err.println(e);
             return null;
         }
     }
