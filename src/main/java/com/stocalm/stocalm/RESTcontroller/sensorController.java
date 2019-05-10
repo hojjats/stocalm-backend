@@ -78,4 +78,15 @@ public class sensorController {
         this.sensorRepository.save(s);
         return r;
     }
+    
+    @GetMapping("/id/{id}/value/{value}/date/{date}/time/{time}")
+    public Reading addSensorTest(@PathVariable String id, @PathVariable String value, @PathVariable String date, @PathVariable String time) {
+        double doubleValue = Double.parseDouble(value);
+        Reading reading = new Reading(date, time, doubleValue);
+        Sensor sensor = this.sensorRepository.getSensorById(id);
+        sensor.getReadings().add(reading);
+        this.sensorRepository.save(sensor);
+        return reading;
+    }
+    
 }
