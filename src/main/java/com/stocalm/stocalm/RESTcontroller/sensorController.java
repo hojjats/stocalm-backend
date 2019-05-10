@@ -1,12 +1,11 @@
 package com.stocalm.stocalm.RESTcontroller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.stocalm.stocalm.Models.Reading;
 import com.stocalm.stocalm.Models.Sensor;
 import com.stocalm.stocalm.Service.SensorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
@@ -30,6 +29,11 @@ public class sensorController {
         return null;
     }
 
+    @PostMapping("/post")
+    public Sensor addSensor(@RequestBody Sensor sensor) {
+        return sensorService.addSensor(sensor);
+    }
+
     //================================================================================
     // Readings
     //================================================================================
@@ -41,13 +45,13 @@ public class sensorController {
 
     @PostMapping("/readings/{sensorId}")
     public Reading addReading(@PathVariable String sensorId, @RequestBody Reading reading) {
-        try{
-            ObjectMapper mapper = new ObjectMapper();
-            String jsonString = mapper.writeValueAsString(reading);
-        }catch (JsonProcessingException e){
+        return this.sensorService.addReading(sensorId, reading);
+    }
 
-        }
-
+    @GetMapping("/id/{sensorId}/value/{value}/date/{date}/time/{time}")
+    public Reading addReadingWithGetMethod(@PathVariable String sensorId, @PathVariable String value, @PathVariable String date, @PathVariable String time) {
+        double doubleValue = Double.parseDouble(value);
+        Reading reading = new Reading(date, time, doubleValue);
         return this.sensorService.addReading(sensorId, reading);
     }
 
@@ -59,4 +63,6 @@ public class sensorController {
     public String test(@PathVariable String test) {
         return "Testar med: " + test;
     }
+
+
 }

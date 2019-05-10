@@ -6,7 +6,9 @@ import com.stocalm.stocalm.Repository.SensorRepository;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
+
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,10 +22,32 @@ public class SensorService {
     @Autowired
     private ApiService apiService;
 
+
+   /*
+    // Executes when initiating class
+    @PostConstruct
+    private void init() {
+    }
+    */
+
+    // Update mean values every 12 hours
+    @Scheduled(fixedDelay = 43200000)
+    private void updateSensorsFormDB() {
+        List<Sensor> sensorsFromDB = this.sensorRepository.findAll();
+        updateMeanValues(sensorsFromDB);
+        sensorsFromDB.forEach(sensor -> this.sensorRepository.save(sensor));
+        System.out.println("Mean values updated!");
+    }
+
+    private void updateMeanValues(List<Sensor> sensors) {
+        sensors.forEach(sensor -> sensor.setMeanValues());
+    }
+
     public List<Sensor> getAllSensors() {
-        List allSensors = getExternalSensor();
-        allSensors.addAll(sensorRepository.findAll());
-        return allSensors;
+        List sensors = getExternalSensor();
+        this.updateMeanValues(sensors);     // Calculate external sensors mean values
+        sensors.addAll(sensorRepository.findAll());
+        return sensors;
     }
 
     public List<Reading> getReadingsBySensorId(String sensorId) {
@@ -38,6 +62,11 @@ public class SensorService {
             // TODO -> Exception
             return null;
         }
+    }
+
+    public Sensor addSensor(Sensor sensor) {
+        sensorRepository.save(sensor);
+        return sensor;
     }
 
     public Reading addReading(String sensorId, Reading reading) {
@@ -73,14 +102,14 @@ public class SensorService {
 
     /**
      * Converts a ExternalSensor object with type munisense to a Sensor object
-     *
+     * <p>
      * The JSON response from the API should have the structure:
      * {
      * "results": [
-     *  {"timestamp":"2019-04-04T14:44:35.000+00:00",
-     *  "avg":44.6877,
-     *  "min":34.69,
-     *  "max":68.56}
+     * {"timestamp":"2019-04-04T14:44:35.000+00:00",
+     * "avg":44.6877,
+     * "min":34.69,
+     * "max":68.56}
      * ],
      * "meta":{}
      * }
@@ -109,7 +138,7 @@ public class SensorService {
             readings.add(reading);
         }
         // Create a new sensor object and return it
-        return new Sensor(position, readings);
+        return new Sensor(position, readings, null, null);
 
     }
 
