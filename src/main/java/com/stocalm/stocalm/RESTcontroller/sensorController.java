@@ -6,9 +6,7 @@ import com.stocalm.stocalm.Service.SensorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping(path = "/api/sensors")
@@ -17,9 +15,9 @@ public class sensorController {
     @Autowired
     private SensorService sensorService;
 
-    /*
-    Sensors
-     */
+    //================================================================================
+    // Sensors
+    //================================================================================
 
     @GetMapping("")
     public List<Sensor> getSensors() {
@@ -32,13 +30,13 @@ public class sensorController {
     }
 
     @PostMapping("/post")
-    public Sensor addSensor(@RequestBody Sensor sensor){
+    public Sensor addSensor(@RequestBody Sensor sensor) {
         return sensorService.addSensor(sensor);
     }
 
-    /*
-    Readings
-     */
+    //================================================================================
+    // Readings
+    //================================================================================
 
     @GetMapping("/readings/{sensorId}")
     public List<Reading> getReadingsBySensorId(@PathVariable String sensorId) {
@@ -50,21 +48,21 @@ public class sensorController {
         return this.sensorService.addReading(sensorId, reading);
     }
 
-    /*
-    Graph
-     */
-
-    @GetMapping("/graph/weekdays/{sensorId}")
-    public double[] getGraphValuesByWeekday(@PathVariable String sensorId) {
-        return sensorService.getMeanValuesByWeekday(sensorId);
+    @GetMapping("/id/{sensorId}/value/{value}/date/{date}/time/{time}")
+    public Reading addReadingWithGetMethod(@PathVariable String sensorId, @PathVariable String value, @PathVariable String date, @PathVariable String time) {
+        double doubleValue = Double.parseDouble(value);
+        Reading reading = new Reading(date, time, doubleValue);
+        return this.sensorService.addReading(sensorId, reading);
     }
 
-    /*
-    Test
-     */
+    //================================================================================
+    // Test
+    //================================================================================
 
     @GetMapping("/test/{test}")
     public String test(@PathVariable String test) {
         return "Testar med: " + test;
     }
+
+
 }

@@ -2,10 +2,6 @@ package com.stocalm.stocalm.Models;
 
 public class ExternalSensor {
 
-    public enum Type {
-        MUNISENSE
-    }
-
     String api;
     String name;
     double lat;
