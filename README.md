@@ -58,3 +58,8 @@ _(Om det inte går att köra program/run i intelliJ, dubbelkolla så att java-ma
 1. Kör kommandot `ionic serve`
 1. Testa att det fungerar genom att gå till ​http://localhost:8100 
 1. Klart.
+
+
+### Common errors
+* "java: cannot find symbol" or "package org.json does not exist"? 
+Try Reimport all Maven projects.
