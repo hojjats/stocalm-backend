@@ -122,7 +122,8 @@ public class SensorService {
         Location location = new Location(
                 externalSensor.getPosition().getLocation().getName(),
                 externalSensor.getPosition().getLocation().getImgUrl(),
-                externalSensor.getPosition().getLocation().getAmenities());
+                externalSensor.getPosition().getLocation().getAmenities(),
+                externalSensor.getPosition().getLocation().getDescription());
         Position position = new Position(
                 externalSensor.getPosition().getLng(),
                 externalSensor.getPosition().getLat(),
