@@ -38,7 +38,7 @@
 * Download and install Postman https://www.getpostman.com/
 * To post to your test MongoDB:
 1. In the dropdown menu, choose POST
-1. Set the URL to ´localhost:8080/api/sensor/post´
+1. Set the URL to ´localhost:8080/readingsApi/sensor/post´
 1. Go to the tab Body, check Raw
 1. Click the Text-dropdown and choose JSON (application/json)
 1. 
