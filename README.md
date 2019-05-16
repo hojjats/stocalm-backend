@@ -38,7 +38,7 @@
 * Download and install Postman https://www.getpostman.com/
 * To post to your test MongoDB:
 1. In the dropdown menu, choose POST
-1. Set the URL to `localhost:8080/api/sensor/post`
+1. Set the URL to ´localhost:8080/readingsApi/sensor/post´
 1. Go to the tab Body, check Raw
 1. Click the Text-dropdown and choose JSON (application/json)
 1. 
@@ -50,17 +50,11 @@
 
 ## To run
 1. Starta mongoDB genom att i terminalen skriva ​`mongod`
-1. Öppna backend-delen i din IDE (https://github.com/hojjats/stocalm-backend/)
+1. Öppna backend-delen i din IDE 
 1. Kör (Run) programmet från klassen StocalmApplication 
 _(Om det inte går att köra program/run i intelliJ, dubbelkolla så att java-mappen (src -> main -> java) är inställd som Sources root, annars högerklicka Java-mappen och Mark directory as... -> Sources root.)_
-1. Öppna frontend-delen i din IDE (https://github.com/hojjats/stocalm/)
+1. Öppna frontend-delen i din IDE
 1. I terminalen, gå till mappen för projektet.(IntelliJ har en inbyggd terminal. Du kan klicka upp den genom att längst ner klicka på “Terminal”. Sen räckerdet att man klickar på plusset för att få upp en ny terminal med start från mappen).
-1. Kör kommandot `npm install` för att ladda ned och installera dependencies
 1. Kör kommandot `ionic serve`
 1. Testa att det fungerar genom att gå till ​http://localhost:8100 
 1. Klart.
-
-
-### Common errors
-* "java: cannot find symbol" or "package org.json does not exist"? 
-Try Reimport all Maven projects.
