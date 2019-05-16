@@ -119,11 +119,17 @@ public class SensorService {
      */
     private Sensor munisenseToSensor(ExternalSensor externalSensor) {
         // Create new objects
-        Location location = new Location(externalSensor.getName());
-        Position position = new Position(externalSensor.getLng(), externalSensor.getLat(), location);
+        Location location = new Location(
+                externalSensor.getPosition().getLocation().getName(),
+                externalSensor.getPosition().getLocation().getImgUrl(),
+                externalSensor.getPosition().getLocation().getAmenities());
+        Position position = new Position(
+                externalSensor.getPosition().getLng(),
+                externalSensor.getPosition().getLat(),
+                location);
         List<Reading> readings = new ArrayList<>();
         // Get values from API and convert it to JSONObject
-        String json = apiService.getRequest(externalSensor.getApi());
+        String json = apiService.getRequest(externalSensor.getReadingsApi());
         JSONObject jsonObj = new JSONObject(json);
         // Get the array of readings and loop through it
         JSONArray jArr = jsonObj.getJSONArray("results");
