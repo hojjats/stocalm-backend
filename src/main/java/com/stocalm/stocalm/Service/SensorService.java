@@ -44,6 +44,7 @@ public class SensorService {
     }
 
     public List<Sensor> getAllSensors() {
+        updateSensorsFormDB();
         List sensors = getExternalSensor();
         this.updateMeanValues(sensors);     // Calculate external sensors mean values
         sensors.addAll(sensorRepository.findAll());
