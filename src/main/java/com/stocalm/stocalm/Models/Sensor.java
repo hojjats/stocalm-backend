@@ -140,11 +140,17 @@ public class Sensor {
                     readingsPerHour++;
                     totalHourValue += reading.getValue();
                 }
-
-                hourMeanValue.get(i).set(j, (readingsPerHour == 0 ? 0 : totalHourValue / readingsPerHour));
+                double hourValue = 0.0;
+                if(readingsPerHour > 0){
+                    hourValue = Math.round(totalHourValue / readingsPerHour * 100) / 100.0; // Round to two decimals
+                }
+                hourMeanValue.get(i).set(j, hourValue);
             }
-
-            weekdayMeanValue.set(i, (readingsPerDay == 0 ? 0 : totalDayValue / readingsPerDay));
+            double dayValue = 0.0;
+            if(readingsPerDay > 0){
+                dayValue = Math.round(totalDayValue / readingsPerDay * 100) / 100.0; // Round to two decimals
+            }
+            weekdayMeanValue.set(i, dayValue);
         }
 
     }
