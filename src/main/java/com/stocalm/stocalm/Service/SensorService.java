@@ -36,7 +36,6 @@ public class SensorService {
         List<Sensor> sensorsFromDB = this.sensorRepository.findAll();
         updateMeanValues(sensorsFromDB);
         sensorsFromDB.forEach(sensor -> this.sensorRepository.save(sensor));
-        System.out.println("Mean values updated!");
     }
 
     private void updateMeanValues(List<Sensor> sensors) {
@@ -44,6 +43,7 @@ public class SensorService {
     }
 
     public List<Sensor> getAllSensors() {
+        updateSensorsFormDB();
         List sensors = getExternalSensor();
         this.updateMeanValues(sensors);     // Calculate external sensors mean values
         sensors.addAll(sensorRepository.findAll());
