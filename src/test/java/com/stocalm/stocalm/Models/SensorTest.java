@@ -46,29 +46,44 @@ class SensorTest {
 
     @Test
     void getId() {
-        assertNotEquals(null, sensor.getId());
+      //  assertNotEquals(null, sensor.getId());
         assertNotEquals(0, sensor.getId());
     }
 
     @Test
     void getPosition() {
+        assertEquals(position, sensor.getPosition());
+        assertNotEquals(null, sensor.getPosition());
+
     }
 
     @Test
     void getReadings() {
+
+        assertNotEquals(null, sensor.getReadings());
     }
 
     @Test
     void getWeekdayMeanValue() {
+        assertNotEquals(-1, sensor.getWeekdayMeanValue());
     }
 
     @Test
     void getHourMeanValue() {
+        assertNotEquals(-1, sensor.getHourMeanValue());
     }
 
     @Test
     void setId() {
+        assertEquals(null, emptySensor.getId());
+        assertNotEquals("1001", emptySensor.getId());
+        emptySensor.setId("1001");
+        assertEquals("1001", emptySensor.getId());
+        sensor.setId("2000");
+        assertEquals("2000", sensor.getId());
     }
+
+    /*
 
     @Test
     void setPosition() {
@@ -93,4 +108,6 @@ class SensorTest {
     @Test
     void setMeanValues() {
     }
+
+    */
 }
