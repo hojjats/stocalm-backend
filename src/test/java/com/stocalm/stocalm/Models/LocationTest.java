@@ -1,5 +1,6 @@
 package com.stocalm.stocalm.Models;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -8,10 +9,16 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class LocationTest {
-    private Location location1 = new Location("Test location");
+    private Location location1, location2;
+    private ArrayList<String> amenities;
 
-    private ArrayList<String> amenities = new ArrayList<>();
-    private Location location2 = new Location("Second test location", "aTestUrl", amenities, "The second test location");
+    @BeforeEach
+    void setUp() {
+        location1 = new Location("Test location");
+
+        amenities = new ArrayList<>();
+        location2 = new Location("Second test location", "aTestUrl", amenities, "The second test location");
+    }
 
     @Test
     void getDescription() {

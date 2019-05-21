@@ -1,14 +1,22 @@
 package com.stocalm.stocalm.Models;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class ExternalSensorTest {
-    ExternalSensor externalSensor = new ExternalSensor();
-    String testReadingApi = "test reading api";
-    Position testPosition = new Position(11.0, 5.0, new Location("LocationName"));
-    String testType = "A type";
+    ExternalSensor externalSensor;
+    String testReadingApi, testType;
+    Position testPosition;
+
+    @BeforeEach
+    void setUp() {
+        externalSensor = new ExternalSensor();
+        testReadingApi = "test reading api";
+        testPosition = new Position(11.0, 5.0, new Location("LocationName"));
+        testType = "A type";
+    }
 
     @Test
     void setReadingsApi() {

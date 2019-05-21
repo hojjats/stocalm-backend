@@ -1,13 +1,21 @@
 package com.stocalm.stocalm.Models;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class PositionTest {
-    Position emptyPostion = new Position();
-    Location testLocation = new Location("Testlocation for position");
-    Position testPosition = new Position(11.0, 5.5, testLocation);
+    Position emptyPostion, testPosition;
+    Location testLocation;
+
+
+    @BeforeEach
+    void setUp() {
+        emptyPostion = new Position();
+        testLocation = new Location("Testlocation for position");
+        testPosition = new Position(11.0, 5.5, testLocation);
+    }
 
     @Test
     void getLat() {

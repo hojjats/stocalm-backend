@@ -1,15 +1,24 @@
 package com.stocalm.stocalm.Models;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class ReadingTest {
 
-    String testDate = "2019-05-05";
-    String testTime = "12:00";
-    double testValue = 42.0;
-    Reading reading = new Reading(testDate, testTime, testValue);
+    String testDate, testTime;
+    double testValue;
+    Reading reading;
+
+
+    @BeforeEach
+    void setUp() {
+        testDate = "2019-05-05";
+        testTime = "12:00";
+        testValue = 42.0;
+        reading = new Reading(testDate, testTime, testValue);
+    }
 
     @Test
     void getValue() {
