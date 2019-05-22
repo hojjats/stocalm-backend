@@ -46,7 +46,6 @@ class SensorTest {
 
     @Test
     void getId() {
-      //  assertNotEquals(null, sensor.getId());
         assertNotEquals(0, sensor.getId());
     }
 
@@ -54,23 +53,23 @@ class SensorTest {
     void getPosition() {
         assertEquals(position, sensor.getPosition());
         assertNotEquals(null, sensor.getPosition());
-
     }
 
     @Test
     void getReadings() {
-
         assertNotEquals(null, sensor.getReadings());
     }
 
     @Test
     void getWeekdayMeanValue() {
         assertNotEquals(-1, sensor.getWeekdayMeanValue());
+        assertNotEquals(null, sensor.getWeekdayMeanValue());
     }
 
     @Test
     void getHourMeanValue() {
         assertNotEquals(-1, sensor.getHourMeanValue());
+        assertNotEquals(null, sensor.getWeekdayMeanValue());
     }
 
     @Test
@@ -83,31 +82,78 @@ class SensorTest {
         assertEquals("2000", sensor.getId());
     }
 
-    /*
+
 
     @Test
     void setPosition() {
+        assertEquals(position, sensor.getPosition());
+        Position newPos = new Position(11.0, 40.0, new Location("Another location!"));
+        sensor.setPosition(newPos);
+        assertEquals(newPos, sensor.getPosition());
+
     }
+
 
     @Test
     void setReadings() {
+        assertEquals(readingList, sensor.getReadings());
+
+        List<Reading> newReadingList = new ArrayList<Reading>(
+                Arrays.asList(
+                        new Reading("2019-05-05", "20:00", 60.0),
+                        new Reading("2019-05-06", "21:00", 70),
+                        new Reading("2019-05-07", "22:00", 80)));
+
+        sensor.setReadings(newReadingList);
+        assertNotEquals(readingList, sensor.getReadings());
+        assertNotEquals(null, sensor.getReadings());
+        assertEquals(newReadingList, sensor.getReadings());
     }
+
 
     @Test
     void setHourMeanValue() {
+
+        assertEquals(hourMeanValueList, sensor.getHourMeanValue());
+
+        List<List<Double>> newHourMeanValueList = new ArrayList<List<Double>>(
+                Arrays.asList(new ArrayList<Double>(
+                                Arrays.asList(20.0, 30.0)
+                        ), new ArrayList<Double>(
+                                Arrays.asList(45.0, 55.0)
+                        )
+                ));
+        sensor.setHourMeanValue(newHourMeanValueList);
+        assertNotEquals(null, sensor.getHourMeanValue());
+        assertEquals(newHourMeanValueList, sensor.getHourMeanValue());
     }
+
+
 
     @Test
     void setWeekdayMeanValue() {
+        assertEquals(weekdayMeanValueList, sensor.getWeekdayMeanValue());
+
+        List<Double> newWeekdayMeanValueList = new ArrayList<Double>(
+                Arrays.asList(20.0, 30.0, 40.0, 20.0, 20.0, 30.0, 30.0)
+        );
+
+        sensor.setWeekdayMeanValue(newWeekdayMeanValueList);
+        assertNotEquals(null, sensor.getWeekdayMeanValue());
+        assertEquals(newWeekdayMeanValueList, sensor.getWeekdayMeanValue());
+
     }
 
     @Test
     void addReading() {
+        Reading newReading = new Reading("2001-10-10", "13:37", 43);
+        int readingSize = sensor.getReadings().size();
+        sensor.addReading(newReading);
+        assertTrue(readingSize +1 == sensor.getReadings().size());
+        assertNotEquals(null, sensor.getReadings());
+
+        sensor.addReading(new Reading("2002-02-02", "12:22", 33));
+        assertTrue(readingSize +2 == sensor.getReadings().size());
     }
 
-    @Test
-    void setMeanValues() {
-    }
-
-    */
 }
