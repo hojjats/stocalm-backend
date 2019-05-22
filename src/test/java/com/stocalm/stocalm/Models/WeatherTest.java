@@ -36,7 +36,7 @@ class WeatherTest {
 
     @Test
     void getTime() {
-        assertNotEquals(null, weather.getTime());
+        assertNotNull(weather.getTime());
         assertEquals(time, weather.getTime());
     }
 
