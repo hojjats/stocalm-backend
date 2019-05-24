@@ -44,4 +44,14 @@ class ApiServiceTest {
         apiService.getRequestWithParams("testStringUrl", newMap);
         verify(apiService).getRequestWithParams("testStringUrl", newMap);
     }
+
+    @Test
+    void getRequestWithParamsCallRealMethod() {
+        Map<String, String> paramsMap = new HashMap<>();
+        paramsMap.put("user", "1");
+        when(apiService.getRequestWithParams(anyString(), anyMap())).thenCallRealMethod();
+
+        apiService.getRequestWithParams("testStringUrl", paramsMap);
+        verify(apiService).getRequestWithParams("testStringUrl", paramsMap);
+    }
 }
