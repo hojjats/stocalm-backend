@@ -49,7 +49,6 @@
 * To install: https://ionicframework.com/getting-started#cli
 
 ## To run
-1. Starta mongoDB genom att i terminalen skriva ​`mongod`
 1. Öppna backend-delen i din IDE 
 1. Kör (Run) programmet från klassen StocalmApplication 
 _(Om det inte går att köra program/run i intelliJ, dubbelkolla så att java-mappen (src -> main -> java) är inställd som Sources root, annars högerklicka Java-mappen och Mark directory as... -> Sources root.)_
