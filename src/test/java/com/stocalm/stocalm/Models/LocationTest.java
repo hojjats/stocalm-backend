@@ -17,7 +17,7 @@ class LocationTest {
         location1 = new Location("Test location");
 
         amenities = new ArrayList<>();
-        location2 = new Location("Second test location", "aTestUrl", amenities, "The second test location");
+        location2 = new Location("Second test location", "aTestUrl", amenities, "The second test location", "Test date: 2019-05-18");
     }
 
     @Test
