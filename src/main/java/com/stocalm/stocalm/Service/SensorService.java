@@ -36,7 +36,6 @@ public class SensorService {
         List<Sensor> sensorsFromDB = this.sensorRepository.findAll();
         updateMeanValues(sensorsFromDB);
         sensorsFromDB.forEach(sensor -> this.sensorRepository.save(sensor));
-        System.out.println("Mean values updated!");
     }
 
     private void updateMeanValues(List<Sensor> sensors) {
@@ -124,7 +123,8 @@ public class SensorService {
                 externalSensor.getPosition().getLocation().getName(),
                 externalSensor.getPosition().getLocation().getImgUrl(),
                 externalSensor.getPosition().getLocation().getAmenities(),
-                externalSensor.getPosition().getLocation().getDescription());
+                externalSensor.getPosition().getLocation().getDescription(),
+                externalSensor.getPosition().getLocation().getDateUpdate());
         Position position = new Position(
                 externalSensor.getPosition().getLng(),
                 externalSensor.getPosition().getLat(),
